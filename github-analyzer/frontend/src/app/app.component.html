@@ -1,8 +1,22 @@
 <h1>Github Analyzer</h1>
 
-<!--<input add logic >-->
-<!--<button>ADD logic</button>-->
+<input [(ngModel)]="githubUsername" placeholder="GitHub username" />
+<button (click)="search()">Search</button>
+
+<p *ngIf="error">{{ error }}</p>
 
 <div *ngIf="data">
-<!--    add data here for followers, repositories, most used technology -->
+  <p>Username: {{ data.username }}</p>
+  <p>Followers: {{ data.followers }}</p>
+  <p *ngIf="data.followers_message">{{ data.followers_message }}</p>
+
+  <p>Most used language: {{ data.most_used_language }}</p>
+
+  <p>All languages: {{ data.all_languages }}</p>
+
+  <p>Repos:</p>
+  <ul>
+    <li *ngFor="let repo of data.repos">{{ repo }}</li>
+  </ul>
+  <p *ngIf="data.repos_message">{{ data.repos_message }}</p>
 </div>
