@@ -4,12 +4,14 @@ import { GithubService } from './github.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  styleUrl: './app.component.css',
   standalone: false,
 })
 export class AppComponent {
   githubUsername = '';
   data: any;
   error = '';
+  loading = false;
 
   constructor(private githubService: GithubService) {}
 
@@ -25,12 +27,16 @@ export class AppComponent {
       return;
     }
 
+    this.loading = true;
+
     this.githubService.getUser(this.githubUsername).subscribe({
       next: (response) => {
         this.data = response;
+        this.loading = false;
       },
       error: (err) => {
         this.error = err.error?.detail || 'Something went wrong.';
+        this.loading = false;
       },
     });
   }

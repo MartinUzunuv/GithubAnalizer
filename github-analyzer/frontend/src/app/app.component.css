@@ -1,0 +1,30 @@
+body {
+  font-family: sans-serif;
+  max-width: 500px;
+  margin: 40px auto;
+}
+
+input {
+  padding: 6px;
+  margin-right: 8px;
+}
+
+button {
+  padding: 6px 12px;
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  margin: 12px 0;
+  border: 3px solid #ddd;
+  border-top-color: #333;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

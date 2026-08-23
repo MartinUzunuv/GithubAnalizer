@@ -3,6 +3,8 @@
 <input [(ngModel)]="githubUsername" placeholder="GitHub username" />
 <button (click)="search()">Search</button>
 
+<div class="spinner" *ngIf="loading"></div>
+
 <p *ngIf="error">{{ error }}</p>
 
 <div *ngIf="data">
