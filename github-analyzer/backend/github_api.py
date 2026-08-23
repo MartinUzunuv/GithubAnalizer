@@ -9,7 +9,10 @@ def get_user_data(username):
     TODO:
     call the GitHub API and return a dict with data or None
     """
-    pass
+    response = requests.get(f"{BASE_URL}/users/{username}")
+    if response.status_code != 200:
+        return None
+    return response.json()
 
 
 def get_user_repos(username):
