@@ -29,7 +29,6 @@ def get_user(username: str):
     """
     repos = get_user_repos(username) or []
 
-
     """
     The github user in a more usable format
     """

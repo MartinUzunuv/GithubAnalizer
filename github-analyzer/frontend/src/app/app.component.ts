@@ -15,10 +15,15 @@ export class AppComponent {
 
   search() {
     /**
-     * TODO: call backend, handle logic
+     * Calls backend, handles logic
      */
     this.error = '';
     this.data = null;
+
+    if (!this.githubUsername.trim()) {
+      this.error = 'Please enter a GitHub username.';
+      return;
+    }
 
     this.githubService.getUser(this.githubUsername).subscribe({
       next: (response) => {
