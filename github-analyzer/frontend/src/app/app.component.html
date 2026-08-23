@@ -1,5 +1,7 @@
+<div class="backdrop" *ngIf="showHistory" (click)="toggleHistory()"></div>
+
 <div class="page">
-  <aside class="sidebar">
+  <aside class="sidebar" [class.open]="showHistory">
     <h2>History</h2>
     <ul *ngIf="history.length; else noHistory">
       <li *ngFor="let entry of history" (click)="selectFromHistory(entry)">
@@ -15,7 +17,14 @@
   </aside>
 
   <div class="container">
-    <h1>Github Analyzer</h1>
+    <div class="topbar">
+      <button class="history-toggle" (click)="toggleHistory()" aria-label="Toggle history">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <h1>Github Analyzer</h1>
+    </div>
 
     <div class="search-bar">
       <input [(ngModel)]="githubUsername" placeholder="GitHub username" (keyup.enter)="search()" />

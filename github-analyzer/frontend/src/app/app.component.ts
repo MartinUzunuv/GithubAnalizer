@@ -54,9 +54,16 @@ export class AppComponent implements OnInit {
     });
   }
 
+  showHistory = false;
+
+  toggleHistory() {
+    this.showHistory = !this.showHistory;
+  }
+
   selectFromHistory(entry: HistoryEntry) {
     this.githubUsername = entry.username;
     this.search();
+    this.showHistory = false;
   }
 
   private addToHistory(user: any) {
@@ -67,7 +74,7 @@ export class AppComponent implements OnInit {
     };
     this.history = [
       entry,
-      ...this.history.filter(h => h.username.toLowerCase() !== entry.username.toLowerCase()),
+      ...this.history.filter((h) => h.username.toLowerCase() !== entry.username.toLowerCase()),
     ].slice(0, MAX_HISTORY);
     localStorage.setItem(HISTORY_KEY, JSON.stringify(this.history));
   }
