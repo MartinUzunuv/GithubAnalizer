@@ -20,4 +20,14 @@ def get_user_repos(username):
     TODO:
     call the GitHub API and return a list of dicts(repos name, language/technology) with data or None
     """
-    pass
+    response = requests.get(
+        f"{BASE_URL}/users/{username}/repos",
+        params={"per_page": 100},
+    )
+    if response.status_code != 200:
+        return None
+
+    return [
+        {"name": repo["name"], "language": repo.get("language")}
+        for repo in response.json()
+    ]

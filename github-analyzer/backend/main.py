@@ -25,5 +25,6 @@ def get_user(username: str):
     if user_data is None:
         raise HTTPException(status_code=404, detail=f"User '{username}' does not exist.")
 
+    repos = get_user_repos(username) or []
 
-    return {"message": user_data}
+    return {"message": user_data, "repos": repos}
