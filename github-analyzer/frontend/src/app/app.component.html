@@ -1,24 +1,31 @@
-<h1>Github Analyzer</h1>
+<div class="container">
+  <h1>Github Analyzer</h1>
 
-<input [(ngModel)]="githubUsername" placeholder="GitHub username" />
-<button (click)="search()">Search</button>
+  <div class="search-bar">
+    <input [(ngModel)]="githubUsername" placeholder="GitHub username" (keyup.enter)="search()" />
+    <button (click)="search()">Search</button>
+  </div>
 
-<div class="spinner" *ngIf="loading"></div>
+  <div class="spinner" *ngIf="loading"></div>
 
-<p *ngIf="error">{{ error }}</p>
+  <p class="error" *ngIf="error">{{ error }}</p>
 
-<div *ngIf="data">
-  <p>Username: {{ data.username }}</p>
-  <p>Followers: {{ data.followers }}</p>
-  <p *ngIf="data.followers_message">{{ data.followers_message }}</p>
+  <div class="result" *ngIf="data">
+    <p><strong>Username:</strong> {{ data.username }}</p>
+    <p><strong>Followers:</strong> {{ data.followers }}</p>
+    <p class="muted" *ngIf="data.followers_message">{{ data.followers_message }}</p>
 
-  <p>Most used language: {{ data.most_used_language }}</p>
+    <p><strong>Most used language:</strong> {{ data.most_used_language }}</p>
 
-  <p>All languages: {{ data.all_languages }}</p>
+    <p><strong>All languages:</strong></p>
+    <div class="badges">
+      <span class="badge" *ngFor="let lang of data.all_languages">{{ lang }}</span>
+    </div>
 
-  <p>Repos:</p>
-  <ul>
-    <li *ngFor="let repo of data.repos">{{ repo }}</li>
-  </ul>
-  <p *ngIf="data.repos_message">{{ data.repos_message }}</p>
+    <p><strong>Repos:</strong></p>
+    <ul class="repo-list">
+      <li *ngFor="let repo of data.repos">{{ repo }}</li>
+    </ul>
+    <p class="muted" *ngIf="data.repos_message">{{ data.repos_message }}</p>
+  </div>
 </div>
