@@ -1,31 +1,48 @@
-<div class="container">
-  <h1>Github Analyzer</h1>
+<div class="page">
+  <aside class="sidebar">
+    <h2>History</h2>
+    <ul *ngIf="history.length; else noHistory">
+      <li *ngFor="let entry of history" (click)="selectFromHistory(entry)">
+        <div class="history-name">{{ entry.username }}</div>
+        <div class="history-meta">
+          {{ entry.followers }} followers · {{ entry.mostUsedLanguage || 'N/A' }}
+        </div>
+      </li>
+    </ul>
+    <ng-template #noHistory>
+      <p class="muted">No searches yet.</p>
+    </ng-template>
+  </aside>
 
-  <div class="search-bar">
-    <input [(ngModel)]="githubUsername" placeholder="GitHub username" (keyup.enter)="search()" />
-    <button (click)="search()">Search</button>
-  </div>
+  <div class="container">
+    <h1>Github Analyzer</h1>
 
-  <div class="spinner" *ngIf="loading"></div>
-
-  <p class="error" *ngIf="error">{{ error }}</p>
-
-  <div class="result" *ngIf="data">
-    <p><strong>Username:</strong> {{ data.username }}</p>
-    <p><strong>Followers:</strong> {{ data.followers }}</p>
-    <p class="muted" *ngIf="data.followers_message">{{ data.followers_message }}</p>
-
-    <p><strong>Most used language:</strong> {{ data.most_used_language }}</p>
-
-    <p><strong>All languages:</strong></p>
-    <div class="badges">
-      <span class="badge" *ngFor="let lang of data.all_languages">{{ lang }}</span>
+    <div class="search-bar">
+      <input [(ngModel)]="githubUsername" placeholder="GitHub username" (keyup.enter)="search()" />
+      <button (click)="search()">Search</button>
     </div>
 
-    <p><strong>Repos:</strong></p>
-    <ul class="repo-list">
-      <li *ngFor="let repo of data.repos">{{ repo }}</li>
-    </ul>
-    <p class="muted" *ngIf="data.repos_message">{{ data.repos_message }}</p>
+    <div class="spinner" *ngIf="loading"></div>
+
+    <p class="error" *ngIf="error">{{ error }}</p>
+
+    <div class="result" *ngIf="data">
+      <p><strong>Username:</strong> {{ data.username }}</p>
+      <p><strong>Followers:</strong> {{ data.followers }}</p>
+      <p class="muted" *ngIf="data.followers_message">{{ data.followers_message }}</p>
+
+      <p><strong>Most used language:</strong> {{ data.most_used_language }}</p>
+
+      <p><strong>All languages:</strong></p>
+      <div class="badges">
+        <span class="badge" *ngFor="let lang of data.all_languages">{{ lang }}</span>
+      </div>
+
+      <p><strong>Repos:</strong></p>
+      <ul class="repo-list">
+        <li *ngFor="let repo of data.repos">{{ repo }}</li>
+      </ul>
+      <p class="muted" *ngIf="data.repos_message">{{ data.repos_message }}</p>
+    </div>
   </div>
 </div>

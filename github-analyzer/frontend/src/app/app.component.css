@@ -103,7 +103,7 @@ button:hover {
 .spinner {
   width: 24px;
   height: 24px;
-  margin: 12px 0;
+  margin: 12px auto;
   border: 3px solid #30363d;
   border-top-color: #58a6ff;
   border-radius: 50%;
@@ -114,4 +114,52 @@ button:hover {
   to {
     transform: rotate(360deg);
   }
+}
+
+.page {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 180px;
+  flex-shrink: 0;
+  padding: 40px 12px;
+  border-right: 1px solid #21262d;
+}
+
+.sidebar h2 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #8b949e;
+  margin: 0 0 12px;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 4px;
+}
+
+.sidebar li:hover {
+  background: #21262d;
+}
+
+.history-name {
+  font-size: 13px;
+  color: #c9d1d9;
+}
+
+.history-meta {
+  font-size: 11px;
+  color: #8b949e;
+  margin-top: 2px;
 }
