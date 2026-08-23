@@ -6,8 +6,7 @@ BASE_URL = "https://api.github.com"
 
 def get_user_data(username):
     """
-    TODO:
-    call the GitHub API and return a dict with data or None
+    calls the GitHub API and returns a dict with data or None
     """
     response = requests.get(f"{BASE_URL}/users/{username}")
     if response.status_code != 200:
@@ -17,8 +16,7 @@ def get_user_data(username):
 
 def get_user_repos(username):
     """
-    TODO:
-    call the GitHub API and return a list of dicts(repos name, language/technology) with data or None
+    calls the GitHub API and returns a list of dicts(repos name, language/technology) with data or None
     """
     response = requests.get(
         f"{BASE_URL}/users/{username}/repos",
