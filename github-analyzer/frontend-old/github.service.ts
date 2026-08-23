@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class GithubService {
 
-    private apiUrl = 'http://127.0.0.1:8000/api/user';
+    private apiUrl = 'http://127.0.0.1:8001/api/user';
 
     constructor(private http: HttpClient) {}
 
