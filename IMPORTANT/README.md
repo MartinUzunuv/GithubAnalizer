@@ -3,14 +3,18 @@
 ## Running the project
 
 **Backend**
-cd backend
-python -m uvicorn main:app --reload
+<br/>
+`cd backend`
+<br/>
+`python -m uvicorn main:app --reload`
 
 
 
 **Frontend**
-cd frontend
-ng serve
+<br/>
+`cd frontend`
+<br/>
+`ng serve`
 
 
 
