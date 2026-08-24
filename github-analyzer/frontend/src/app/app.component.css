@@ -7,9 +7,9 @@
 }
 
 .container {
-  flex: 1;
-  min-width: 0;
+  flex: 1 1 640px;
   max-width: 640px;
+  min-width: 0;
   margin: 0 auto;
   padding: 40px 20px;
   box-sizing: border-box;
@@ -214,6 +214,7 @@ button:hover {
   }
 
   .sidebar {
+    flex: 0 0 180px;
     position: fixed;
     top: 0;
     left: 0;
@@ -230,5 +231,16 @@ button:hover {
 
   .sidebar.open {
     transform: translateX(0);
+  }
+}
+
+.sidebar-spacer {
+  flex: 0 999 180px;
+  min-width: 0;
+}
+
+@media (max-width: 700px) {
+  .sidebar-spacer {
+    display: none;
   }
 }
